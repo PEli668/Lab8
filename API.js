@@ -8,61 +8,50 @@ const options = {
     }
 };
 
-// Function to fetch user data
 async function fetchUserData(username) {
     try {
         const response = await fetch(`${url}${username}`, options);
-
-        // Check if response is OK (status code 200)
+        
         if (!response.ok) {
             throw new Error('User not found or API request failed');
         }
 
-        const result = await response.json(); // Parse response as JSON
+        const result = await response.json();
+        console.log(result); // Log the entire response
+        console.log(result.data); // Log the data object to see its structure
 
-        // Display user information
-        displayUserInfo(result);
+        if (result.data) {
+            displayUserInfo(result.data);
+        } else {
+            alert('No data available for this user');
+        }
     } catch (error) {
         console.error(error);
-        alert(error.message); // Show an alert with the error message
+        alert(error.message);
     }
 }
 
-// Function to display user information
 function displayUserInfo(data) {
-    const userInfoContainer = document.getElementById('user-info-container');
-    userInfoContainer.innerHTML = ''; // Clear previous content
+    const userInfoTextArea = document.getElementById('userText');
+    userInfoTextArea.value = ''; // Clear previous content
 
-    // Create elements to display user data
-    const usernameElement = document.createElement('h3');
-    usernameElement.textContent = `Username: ${data.username}`;
+    const userInfo = `
+Username: ${data.username || 'Not available'}
+Bio: ${data.biography || 'No bio available'}
+Followers: ${data.followers_count || '0'}
+Following: ${data.following_count || '0'}
+Posts: ${data.media_count || '0'}
+Account Type: ${data.account_type === 1 ? 'Personal' : 'Business'}
+    `;
 
-    const bioElement = document.createElement('p');
-    bioElement.textContent = `Bio: ${data.bio || 'No bio available'}`;
-
-    const followersElement = document.createElement('p');
-    followersElement.textContent = `Followers: ${data.followers_count || '0'}`;
-
-    const followingElement = document.createElement('p');
-    followingElement.textContent = `Following: ${data.following_count || '0'}`;
-
-    const postsElement = document.createElement('p');
-    postsElement.textContent = `Posts: ${data.media_count || '0'}`;
-
-    // Append elements to the container
-    userInfoContainer.appendChild(usernameElement);
-    userInfoContainer.appendChild(bioElement);
-    userInfoContainer.appendChild(followersElement);
-    userInfoContainer.appendChild(followingElement);
-    userInfoContainer.appendChild(postsElement);
+    userInfoTextArea.value = userInfo; // Set the value of textarea to user info
 }
 
-// Event listener for the search button
 document.getElementById('searchButton').addEventListener('click', () => {
-    const username = document.getElementById('usernameInput').value.trim(); // Get the input value
+    const username = document.getElementById('usernameInput').value.trim();
     if (username) {
-        fetchUserData(username); // Fetch user data if username is not empty
+        fetchUserData(username);
     } else {
-        alert('Please enter a username'); // Alert if username is empty
+        alert('Please enter a username');
     }
 });
