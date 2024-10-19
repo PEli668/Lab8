@@ -1,0 +1,1 @@
+I chose this instagram api because if I ever get blocked on my main i can still see how the other user who blocked me is doing. Also because I use instagram frequently and I wanted to display it in a cool way. didn't get enough time to figure out how to upload their profile picture though.
