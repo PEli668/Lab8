@@ -1,0 +1,147 @@
+:root {
+    background-color: white;
+    font-family: 'Kanit', sans-serif;
+    caret-color: transparent;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+header {
+    background-color: #ddcad9;
+    width: 100%;
+    height: 80px;
+    display: block;
+}
+
+.inner_header {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_container h1 {
+    font-size: 32px;
+    font-weight: 200;
+}
+
+.navigation {
+    height: 100%;
+}
+
+.navigation a {
+    padding: 20px;
+    position: relative;
+}
+
+.navigation a li {
+    vertical-align: middle;
+    font-size: 16px;
+    color: black;
+}
+
+.navigation a:hover {
+    background-color: #e5e9ec;
+    cursor: pointer;
+}
+
+.content {
+    margin: 20px auto;
+    text-align: center;
+    max-width: 900px;
+}
+
+#user-search-container {
+    margin: 20px 0;
+}
+
+#usernameInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#searchButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+#searchButton:hover {
+    background-color: #5755d9;
+}
+
+#user-info-container {
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+    .inner_header {
+        max-width: 90%;
+    }
+
+    #usernameInput {
+        width: 80%;
+    }
+
+    #searchButton {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .inner_header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navigation {
+        margin-top: 10px;
+    }
+
+    #usernameInput {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #searchButton {
+        width: 100%;
+    }
+
+    textarea {
+        height: 150px;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo_container h1 {
+        font-size: 28px;
+    }
+}
